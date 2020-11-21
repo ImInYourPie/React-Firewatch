@@ -4,13 +4,15 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { divIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { AiTwotoneFire } from "react-icons/ai";
+import moment from "moment";
 
 const Map = ({ events }) => {
 	const iconMarkup = renderToStaticMarkup(
-		<AiTwotoneFire className="event-icon" size="2rem" color="#ff9a00" />
+		<AiTwotoneFire className="event-icon" size="1.5rem" color="#ff9a00" />
 	);
 	const customMarkerIcon = divIcon({
-		html: iconMarkup
+		html: iconMarkup,
+		popupAnchor: [5, 0]
 	});
 
 	const markers = events.map((event, index) => {
@@ -25,7 +27,10 @@ const Map = ({ events }) => {
 					]}
 					icon={customMarkerIcon}
 				>
-					<Popup></Popup>
+					<Popup>
+						<h3>{event.title}</h3>
+						<h5>{moment(event.geometries[0].date).format("LLL")}</h5>
+					</Popup>
 				</Marker>
 			)
 		);

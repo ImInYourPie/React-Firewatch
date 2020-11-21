@@ -22,6 +22,8 @@ code {
 .leaflet-div-icon {
 	background: transparent !important;
 	border: none !important;
+	width: 1.5rem !important;
+	height: 1.5rem !important;
 }
 
 .loader-container {
