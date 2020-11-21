@@ -1,5 +1,3 @@
-import { useState } from "react";
-import ReactDOM from "react-dom";
 import { renderToStaticMarkup } from "react-dom/server";
 import mapOptions from "../config/map-options";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -9,15 +7,17 @@ import { AiTwotoneFire } from "react-icons/ai";
 
 const Map = ({ events }) => {
 	const iconMarkup = renderToStaticMarkup(
-		<AiTwotoneFire size="2rem" color="orangered" stroke="black" />
+		<AiTwotoneFire className="event-icon" size="2rem" color="#ff9a00" />
 	);
 	const customMarkerIcon = divIcon({
 		html: iconMarkup
 	});
+
 	const markers = events.map((event, index) => {
 		return (
 			event.categories[0].id === 8 && (
 				<Marker
+					className="marker"
 					key={index}
 					position={[
 						event.geometries[0].coordinates[1],
