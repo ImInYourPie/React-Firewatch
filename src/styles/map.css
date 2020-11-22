@@ -1,0 +1,21 @@
+.map {
+	width: 100vw;
+	height: calc(100vh - 16px);
+	margin: 8px;
+}
+
+.event-icon:hover {
+	color: #ff0000 !important;
+}
+
+.leaflet-div-icon {
+	background: transparent !important;
+	border: none !important;
+	width: 1.5rem !important;
+	height: 1.5rem !important;
+}
+
+.popup-text {
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+}

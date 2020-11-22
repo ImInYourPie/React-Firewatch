@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Aside from "./components/Aside";
 import Loader from "./components/Loader";
 
 // Components
@@ -25,7 +26,10 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">{loading ? <Loader /> : <Map events={events} />}</div>
+		<div className="App">
+			<Aside events={events} />
+			{loading ? <Loader /> : <Map events={events} />}
+		</div>
 	);
 }
 
