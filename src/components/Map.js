@@ -1,15 +1,16 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import mapOptions from "../config/map-options";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import Leaflet, { divIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { AiTwotoneFire } from "react-icons/ai";
 import moment from "moment";
+import Marker from "./Marker";
 
 // Style
 import "../styles/map.css";
 
-const Map = ({ events }) => {
+const Map = ({ events, center, zoom, selectedIndex }) => {
 	const corner1 = Leaflet.latLng(-90, -200);
 	const corner2 = Leaflet.latLng(90, 200);
 	const bounds = Leaflet.latLngBounds(corner1, corner2);
@@ -23,6 +24,7 @@ const Map = ({ events }) => {
 	});
 
 	const markers = events.map((event, index) => {
+		const { id, title } = event;
 		const date = moment(event.geometries[0].date).format("LLL");
 		const lat = event.geometries[0].coordinates[1];
 		const lng = event.geometries[0].coordinates[0];
@@ -32,33 +34,25 @@ const Map = ({ events }) => {
 		};
 
 		return (
-			event.categories[0].id === 8 && (
-				<Marker
-					className="marker"
-					key={index}
-					position={[lat, lng]}
-					icon={customMarkerIcon}
-				>
-					<Popup>
-						<h3>{event["title"]}</h3>
-						<p className="popup-text">{date}</p>
-						<p className="popup-text">
-							Source:{" "}
-							<a href={source.url} target="_blank" rel="noreferrer">
-								{source.id}
-							</a>
-						</p>
-					</Popup>
-				</Marker>
-			)
+			<Marker
+				key={index}
+				id={id}
+				title={title}
+				date={date}
+				lat={lat}
+				lng={lng}
+				source={source}
+				customMarkerIcon={customMarkerIcon}
+				openPopup={selectedIndex === index}
+			/>
 		);
 	});
 
 	return (
 		<MapContainer
 			className="map"
-			center={mapOptions.center}
-			zoom={mapOptions.zoom}
+			center={center}
+			zoom={zoom}
 			maxBoundsViscosity={1.0}
 			maxBounds={bounds}
 			scrollWheelZoom={mapOptions.isScrollZoom}
@@ -66,7 +60,7 @@ const Map = ({ events }) => {
 			<TileLayer
 				attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}"
-				accessToken={process.env.REACT_APP_MAPS_KEY}
+				accessToken={mapOptions.key}
 			/>
 			{markers}
 		</MapContainer>

@@ -5,30 +5,47 @@ import Loader from "./components/Loader";
 
 // Components
 import Map from "./components/Map";
+import mapOptions from "./config/map-options";
 
 function App() {
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [center, setCenter] = useState(mapOptions.center);
+	const [zoom, setZoom] = useState(mapOptions.zoom);
+	const [selected, setSelected] = useState(null);
 
 	useEffect(() => {
 		const fetchEvents = async () => {
 			setLoading(true);
 			const res = await axios.get(
-				"https://eonet.sci.gsfc.nasa.gov/api/v2.1/events"
+				"https://eonet.sci.gsfc.nasa.gov/api/v2.1/categories/8"
 			);
 			const { events } = res.data;
 			setEvents(events);
-			console.log(events);
 			setLoading(false);
 		};
 
 		fetchEvents();
 	}, []);
 
+	function handleItemClick(index) {
+		setSelected(index);
+	}
+
 	return (
 		<div className="App">
-			<Aside events={events} />
-			{loading ? <Loader /> : <Map events={events} />}
+			<Aside className="Aside" events={events} onItemClick={handleItemClick} />
+			{loading ? (
+				<Loader />
+			) : (
+				<Map
+					className="Map"
+					events={events}
+					center={center}
+					zoom={zoom}
+					selectedIndex={selected}
+				/>
+			)}
 		</div>
 	);
 }

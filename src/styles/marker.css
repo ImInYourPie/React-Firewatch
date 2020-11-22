@@ -1,0 +1,23 @@
+.popup .leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background-color: #444;
+}
+
+.popup h3 {
+	color: white;
+}
+
+.popup a {
+	color: #ff9a00;
+	text-decoration: none;
+}
+
+.popup a:visited {
+	color: #ff6600;
+}
+
+.popup-text {
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+	color: white;
+}

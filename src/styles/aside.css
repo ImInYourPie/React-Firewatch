@@ -1,10 +1,51 @@
 .aside {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	width: 336px;
+	width: 386px;
 	background-color: #222;
 	color: white;
+}
+
+.ruler {
+	width: 90%;
+	margin: 5px;
+	border-color: #444;
+}
+
+.event-feed {
+	overflow-y: auto;
+	margin: 0px 5px 5px 5px;
+}
+
+.event-feed::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #444;
+}
+
+.event-feed::-webkit-scrollbar {
+	width: 5px;
+	background-color: #444;
+}
+
+.event-feed::-webkit-scrollbar-thumb {
+	background-color: #f90;
+	background-image: -webkit-linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.2) 50%,
+		rgba(255, 255, 255, 0.2) 75%,
+		transparent 75%,
+		transparent
+	);
+}
+
+@media only screen and (max-width: 768px) {
+	.aside {
+		display: none;
+	}
 }

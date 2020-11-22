@@ -1,0 +1,42 @@
+.brand-container h1 {
+	font-size: 2.5rem;
+	margin: 10px 0px 0px 0px;
+	background: linear-gradient(to bottom right, #ff9a00, #ff6600);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.brand-container span {
+	margin: 0px 0px 5px 0px;
+}
+
+.brand-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.icon-container {
+	width: 75%;
+	display: flex;
+	margin: 5px 0px 0px 0px;
+	justify-content: space-evenly;
+}
+
+.icon-link {
+	margin: auto;
+	justify-content: space-between;
+}
+
+#github:hover {
+	color: #6e5494 !important;
+}
+
+#linkedin:hover {
+	color: #2867b2 !important;
+}
+
+#facebook:hover {
+	color: #4267b2 !important;
+}
