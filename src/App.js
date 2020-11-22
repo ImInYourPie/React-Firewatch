@@ -34,7 +34,12 @@ function App() {
 
 	return (
 		<div className="App">
-			<Aside className="Aside" events={events} onItemClick={handleItemClick} />
+			<Aside
+				className="Aside"
+				events={events}
+				loading={loading}
+				onItemClick={handleItemClick}
+			/>
 			{loading ? (
 				<Loader />
 			) : (

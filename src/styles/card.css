@@ -1,9 +1,9 @@
 .event-card {
-	background-color: #444;
-	margin: 10px 5px 10px 5px;
-	padding: 10px;
-	border-radius: 5px;
-	box-shadow: 5px 7px rgba(0, 0, 0, 0.2);
+	margin: 20px 15px 20px 15px;
+	padding: 20px;
+	border-radius: 10px;
+	background: #222222;
+	box-shadow: 5px 5px 10px #1b1b1b, -5px -5px 10px #292929;
 }
 
 .card-title {

@@ -1,0 +1,32 @@
+.loading-card {
+	margin: 20px 15px 20px 15px;
+	height: 160px;
+	width: 90%;
+	border-radius: 10px;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: shimmer;
+	animation-timing-function: linear;
+	background-size: 1200px 100%;
+	background: linear-gradient(to right, #242424 8%, #1f1f1f 18%, #1f1f1f 33%);
+	box-shadow: 5px 5px 10px #1b1b1b, -5px -5px 10px #292929;
+}
+
+@-webkit-keyframes shimmer {
+	0% {
+		background-position: -100% 0;
+	}
+	100% {
+		background-position: 100% 0;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1200px 0;
+	}
+	100% {
+		background-position: 1200px 0;
+	}
+}

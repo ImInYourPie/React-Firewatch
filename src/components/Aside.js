@@ -7,8 +7,9 @@ import Card from "./Card";
 
 // Libraries
 import moment from "moment";
+import LoadingCards from "./LoadingCard";
 
-const Aside = ({ events, onItemClick }) => {
+const Aside = ({ events, loading, onItemClick }) => {
 	const cards = events.map((event, index) => {
 		const { id, title } = event;
 		const date = moment(event.geometries[0].date).format("LLL");
@@ -37,7 +38,7 @@ const Aside = ({ events, onItemClick }) => {
 		<div className="aside">
 			<Brand />
 			<hr className="ruler" />
-			<div className="event-feed">{cards}</div>
+			<div className="event-feed">{loading ? <LoadingCards /> : cards}</div>
 		</div>
 	);
 };

@@ -15,6 +15,16 @@
 	height: 1.5rem !important;
 }
 
+.leaflet-control-zoom {
+	border: 1.5px solid white !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	background-color: #444 !important;
+	color: white !important;
+}
+
 @media only screen and (max-width: 768px) {
 	.map {
 		width: 100vw;
